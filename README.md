@@ -111,7 +111,7 @@ Each time the data for the address change, an event `jt:address:data_changed` is
 You can catch it with:
 
 ```javascript
-$('.jt-address-autocomplete').on('jt:address:data_changed', function(data){
+$('.jt-address-autocomplete').on('jt:address:data_changed', function(event, data){
 	console.log(data);
 });
 
