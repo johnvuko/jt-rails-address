@@ -45,7 +45,7 @@ module JT::Rails::Address
 
 			place = json['results'][0]
 
-			data = {}
+			data = HashWithIndifferentAccess.new
 			data['lat'] = place['geometry']['location']['lat']
 			data['lng'] = place['geometry']['location']['lng']
 
