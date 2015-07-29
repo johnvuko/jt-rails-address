@@ -27,6 +27,7 @@ class CreateUsers < ActiveRecord::Migration
 			t.string :email, null: false
 			t.string :password_digest
 
+			# Each field will be prefixed by 'address'
 			t.address :address
 
 			t.timestamps null: false
@@ -73,8 +74,10 @@ In your HTML:
 <%= form_for @user do |f| %>
 
 	<div class="jt-address-autocomplete">
+		<!-- This field is used to search the address on Google Maps -->
 		<%= f.text_field :address, class: 'jt-address-search' %>
 
+		<!-- All fields are hidden because the javascript will set their value automatically -->
 		<% for attr in JT::Rails::Address.fields %>
 			<%= f.hidden_field "address_#{attr}", class: "jt-address-field-#{attr}" %>
 		<% end %>
@@ -84,7 +87,7 @@ In your HTML:
 
 <% end %>
 
-<!-- Load Google Maps -->
+<!-- Load Google Maps and call googleMapInitialize when it's done -->
 <script async type="text/javascript" src="//maps.googleapis.com/maps/api/js?libraries=places&callback=googleMapInitialize"></script>
 ```
 
@@ -98,7 +101,7 @@ window.googleMapInitialize = function(){
     // Simple usage
     $('.jt-address-autocomplete').jt_address();
     
-    // Advacned usage
+    // Advanced usage
     $('.jt-address-autocomplete').jt_address({
         types: ['geocode'],
         componentRestrictions: { country: 'fr' }
