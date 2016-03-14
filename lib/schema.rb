@@ -15,6 +15,7 @@ module JT::Rails::Address::Schema
 		country_code: :string,
 		lat: :float,
 		lng: :float,
+		google_id: :string,
 	}
 
 	module Statements

@@ -3,7 +3,7 @@ Gem::Specification.new do |s|
 	s.summary = "Postal addresses management in Ruby On Rails and Javascript"
 	s.description = "JTRailsAddress simplify postal addresses management and geocoding with Google Maps in Ruby On Rails and Javascript."
 	s.homepage = 'https://github.com/jonathantribouharet/jt-rails-address'
-	s.version = '1.0.1'
+	s.version = '1.1.0'
 	s.files = `git ls-files`.split("\n")
 	s.require_paths = ['lib']
 	s.authors = ['Jonathan TRIBOUHARET']

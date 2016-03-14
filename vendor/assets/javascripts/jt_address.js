@@ -73,6 +73,8 @@
                     }
                 }
 
+                data['google_id'] = place.place_id;
+
                 dataChanged($container, data);
             });
         }

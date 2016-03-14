@@ -74,13 +74,17 @@ module JT::Rails::Address
 
 			end
 
-		   if !data['street_name'].blank?
-                if !data['street_number'].blank?
-                    data['street'] = "#{data['street_number']} #{data['street_name']}"
-                else
-                    data['street'] = data['street_name']
-                end
-            end
+			if !data['street_name'].blank?
+				if !data['street_number'].blank?
+					data['street'] = "#{data['street_number']} #{data['street_name']}"
+				else
+					data['street'] = data['street_name']
+				end
+			end
+
+			if !place['place_id'].blank?
+				data['google_id'] = place['place_id']
+			end
 
 			return data
 		rescue Exception => e
