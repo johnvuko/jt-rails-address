@@ -52,7 +52,6 @@ It will create all the fields you need for address management:
 - `country_code`
 - `lat`, GPS latitude
 - `lng`, GPS longitude
-- `google_id`, Google Place Id
 
 In your model:
 ```ruby

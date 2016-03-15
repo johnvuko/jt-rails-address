@@ -82,10 +82,6 @@ module JT::Rails::Address
 				end
 			end
 
-			if !place['place_id'].blank?
-				data['google_id'] = place['place_id']
-			end
-
 			return data
 		rescue Exception => e
 			STDERR.puts e.message
