@@ -27,7 +27,7 @@ class CreateUsers < ActiveRecord::Migration
 			t.string :email, null: false
 			t.string :password_digest
 
-			# Each field will be prefixed by 'address'
+			# Each field will be prefixed by 'address_'
 			t.address :address
 
 			t.timestamps null: false
@@ -57,12 +57,11 @@ In your model:
 ```ruby
 class User < ActiveRecord::Base
 
+    # Add a virtual field named `address` and a class method `address_fields` returning `JT::Rails::Address.fields` prefixed by `address_` in this case
     has_address :address
 
 end
 ```
-
-It will only add a virtual field named `address`.
 
 ### Javascript usage with Google Maps API
 
@@ -88,7 +87,7 @@ In your HTML:
 <% end %>
 
 <!-- Load Google Maps and call googleMapInitialize when it's done -->
-<script async type="text/javascript" src="//maps.googleapis.com/maps/api/js?libraries=places&callback=googleMapInitialize"></script>
+<script async type="text/javascript" src="//maps.googleapis.com/maps/api/js?libraries=places&callback=googleMapInitialize&key=YOUR_GOOGLE_API_KEY"></script>
 ```
 
 In your `applicaton.js` you have to add:
@@ -101,9 +100,9 @@ window.googleMapInitialize = function(){
     // Simple usage
     $('.jt-address-autocomplete').jt_address();
     
-    // Advanced usage
+    // Advanced usage with google options
     $('.jt-address-autocomplete').jt_address({
-        types: ['geocode'],
+        type: ['restaurant'],
         componentRestrictions: { country: 'fr' }
     });
 
