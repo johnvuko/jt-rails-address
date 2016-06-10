@@ -53,6 +53,8 @@ It will create all the fields you need for address management:
 - `lat`, GPS latitude
 - `lng`, GPS longitude
 
+There are also `add_address` and `remove_address` methods for migrations.
+
 In your model:
 ```ruby
 class User < ActiveRecord::Base
@@ -81,6 +83,9 @@ In your HTML:
 			<%= f.hidden_field "address_#{attr}", class: "jt-address-field-#{attr}" %>
 		<% end %>
 	</div>
+
+	<!-- Optional, if this field is true, the address will be remove -->
+	<%= f.check_box :address_destroy %>
 
 	<%= f.submit %>
 
@@ -132,6 +137,12 @@ data = JT::Rails::Address.search("Eiffel Tower", "YOUR GOOGLE API KEY", {compone
 
 # Use the data retrieve from Google Maps API
 my_instance.load_address(:address, data)
+
+# Use the set a nil all address fileds
+my_instance.reset_address(:address)
+
+# Use the set a nil all address fileds with HTML forms
+my_instance.update({address_destroy: true})
 ```
 
 ## Author
