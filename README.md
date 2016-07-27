@@ -41,7 +41,7 @@ It will create all the fields you need for address management:
 - `formatted_address`, "Empire State Building, 350 5th Ave, New York, NY 10118"
 - `street_number`, "350"
 - `street_name`, "5th Ave"
-- `street`, "350 5th Ave", it's a concatenation of `street_number` and `street_name`
+- `street`, "350 5th Ave", it's the concatenation of `street_number` and `street_name`
 - `city`
 - `zip_code`
 - `department`
@@ -138,10 +138,10 @@ data = JT::Rails::Address.search("Eiffel Tower", "YOUR GOOGLE API KEY", {compone
 # Use the data retrieve from Google Maps API
 my_instance.load_address(:address, data)
 
-# Use the set a nil all address fileds
+# Use the set a nil all address fields
 my_instance.reset_address(:address)
 
-# Use the set a nil all address fileds with HTML forms
+# Use the set a nil all address fields with HTML forms
 my_instance.update({address_destroy: true})
 ```
 
