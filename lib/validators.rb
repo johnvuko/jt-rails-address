@@ -38,7 +38,7 @@ module JT::Rails::Address::Validators
 
 	def check_if_reset_address
 		for address_field in self.class.jt_rails_address_fields
-			if [1, true].include?(self.send("#{address_field}_destroy"))
+			if ActiveRecord::Type::Boolean.new.cast(self.send("#{address_field}_destroy"))
 				reset_address(address_field)
 			end
 		end
